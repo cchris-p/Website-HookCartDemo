@@ -7,7 +7,7 @@ function createCategories(categories, parentId = null){
     if(parentId == null) {
         category = categories.filter(cat => cat.parentId == undefined);
     } else {
-        category = categories.filter(cat => parentId == parentId);
+        category = categories.filter(cat => cat.parentId == parentId);
     }
 
     for(let cate of category) {
