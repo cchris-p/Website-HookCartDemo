@@ -2,6 +2,7 @@ const express = require('express');
 const env = require('dotenv');
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
 
 
 // routes
@@ -17,19 +18,19 @@ const cartRoutes = require('./routes/cart');
 env.config();
 
 // mongodb connection | user: root, pass: admin
-//mongodb+srv://root:<password>@cluster0.fycmq.mongodb.net/<dbname>?retryWrites=true&w=majority
 mongoose.connect(
     `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.fycmq.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`, 
     {
         useNewUrlParser: true, 
         useUnifiedTopology: true,
-        userCreateIndex: true
+        useCreateIndex: true
     }
 ).then(() => {
     console.log('Database connected');
 });
 
 app.use(express.json());
+app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', authRoutes);
 app.use('/api', adminRoutes);
 app.use('/api', categoryRoutes);

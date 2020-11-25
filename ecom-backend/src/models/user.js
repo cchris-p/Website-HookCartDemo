@@ -55,9 +55,10 @@ userSchema.virtual('fullName').get(function() {
 });
 
 userSchema.methods = {
-    authenticate: function(password){
-        return bcrypt.compare(password, this.hash_password);
+    authenticate: async function(password){
+        return await bcrypt.compare(password, this.hash_password);
     }
 }
+
 
 module.exports = mongoose.model('User', userSchema);
