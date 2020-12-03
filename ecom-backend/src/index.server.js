@@ -5,15 +5,12 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 
-
 // routes
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin/auth');
 const categoryRoutes = require('./routes/category');
 const productRoutes = require('./routes/product');
 const cartRoutes = require('./routes/cart');
-
-
 
 // environment variable
 env.config();

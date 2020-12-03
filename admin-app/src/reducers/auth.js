@@ -21,7 +21,8 @@ export default (state = initState, action) => {
         case authConstants.LOGIN_REQUEST:
             state = {
                 ...state,
-                authenticating: true
+                ...action.payload
+                // authenticating: true
             }
             break;
         case authConstants.LOGIN_SUCCESS:

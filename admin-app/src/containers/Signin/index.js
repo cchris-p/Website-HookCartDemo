@@ -9,12 +9,11 @@ const Signin = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // eslint-disable-next-line
-  const [error, setError] = useState('');
+
   const dispatch = useDispatch();
 
   const userLogin = (e) => {
-    
+
     e.preventDefault();
     
     const user = {
@@ -35,7 +34,7 @@ const Signin = (props) => {
               placeholder="Email"
               value={email}
               type="email"
-              onChange={(e) => {setEmail(e.target.value)}}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <Input 
@@ -43,7 +42,7 @@ const Signin = (props) => {
               placeholder="Password"
               value={password}
               type="password"
-              onChange={(e) => {setPassword(e.target.value)}}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
             <Button variant="primary" type="submit">
