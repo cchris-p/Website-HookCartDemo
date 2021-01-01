@@ -21,8 +21,8 @@ export default (state = initState, action) => {
         case authConstants.LOGIN_REQUEST:
             state = {
                 ...state,
-                ...action.payload
-                // authenticating: true
+                ...action.payload,
+                authenticating: true
             }
             break;
         case authConstants.LOGIN_SUCCESS:
@@ -30,10 +30,10 @@ export default (state = initState, action) => {
                 ...state,
                 user: action.payload.user,
                 token: action.payload.token,
-                authenticate: true
+                authenticate: true,
+                authenticating: false
             }
             break; 
-
     }
 
     return state;

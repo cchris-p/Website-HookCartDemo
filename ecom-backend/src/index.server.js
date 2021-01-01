@@ -3,7 +3,13 @@ const env = require('dotenv');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
-const cors = require('cors');
+var cors = require('cors');
+
+
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200,
+}
 
 // routes
 const authRoutes = require('./routes/auth');
@@ -16,18 +22,29 @@ const cartRoutes = require('./routes/cart');
 env.config();
 
 // mongodb connection | user: root, pass: admin
-mongoose.connect(
-    `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.fycmq.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`, 
-    {
-        useNewUrlParser: true, 
-        useUnifiedTopology: true,
-        useCreateIndex: true
-    }
-).then(() => {
-    console.log('Database connected');
-});
+mongoose.connect('mongodb://localhost/hookcart', { 
+    useNewUrlParser: true, 
+    useCreateIndex: true,
+    useUnifiedTopology: true });
+mongoose.connection.once('open', function(){
+    console.log('Database connected...');
+}).on('error', function(error){
+    console.log('Connection error: ', error);
+})
 
-app.use(cors());
+app.use(cors(corsOptions));
+
+// app.use((req, res, next) => {
+//     res.header('Allow-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//     if(req.method === 'OPTIONS') {
+//         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+//         return res.status(200).json({});
+//     }
+// })
+
+app.use(express.json())
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', authRoutes);
