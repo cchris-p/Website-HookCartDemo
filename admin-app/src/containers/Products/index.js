@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Layout from "../../components/Layout";
-import { Container, Row, Col, Table } from "react-bootstrap";
-import Input from "../../components/UI/Input";
-import Modal from "../../components/UI/Modal";
-import { useSelector, useDispatch } from "react-redux";
-import { addProduct, deleteProductById } from "../../actions";
-import "./style.css";
+import React, { useState } from 'react';
+import Layout from '../../components/Layout';
+import { Container, Row, Col, Table } from 'react-bootstrap';
+import Input from '../../components/UI/Input';
+import Modal from '../../components/UI/Modal';
+import { useSelector, useDispatch } from 'react-redux';
+import { addProduct, deleteProductById } from '../../actions';
+import './style.css';
 
 /**
  * @author
@@ -13,11 +13,11 @@ import "./style.css";
  **/
 
 const Products = (props) => {
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [categoryId, setCategoryId] = useState("");
+  const [name, setName] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [price, setPrice] = useState('');
+  const [description, setDescription] = useState('');
+  const [categoryId, setCategoryId] = useState('');
   const [productPictures, setProductPictures] = useState([]);
   const [show, setShow] = useState(false);
   const [productDetailModal, setProductDetailModal] = useState(false);
@@ -32,18 +32,19 @@ const Products = (props) => {
 
   const submitProductForm = () => {
     const form = new FormData();
-    form.append("name", name);
-    form.append("quantity", quantity);
-    form.append("price", price);
-    form.append("description", description);
-    form.append("category", categoryId);
+    form.append('name', name);
+    form.append('quantity', quantity);
+    form.append('price', price);
+    form.append('description', description);
+    form.append('category', categoryId);
 
     for (let pic of productPictures) {
-      form.append("productPicture", pic);
+      form.append('productPicture', pic);
     }
 
     dispatch(addProduct(form)).then(() => setShow(false));
   };
+  
   const handleShow = () => setShow(true);
 
   const createCategoryList = (categories, options = []) => {
@@ -111,7 +112,7 @@ const Products = (props) => {
       <Modal
         show={show}
         handleClose={handleClose}
-        modalTitle={"Add New Product"}
+        modalTitle={'Add New Product'}
         onSubmit={submitProductForm}
       >
         <Input
@@ -182,7 +183,7 @@ const Products = (props) => {
       <Modal
         show={productDetailModal}
         handleClose={handleCloseProductDetailsModal}
-        modalTitle={"Product Details"}
+        modalTitle={'Product Details'}
         size="lg"
       >
         <Row>
@@ -214,7 +215,7 @@ const Products = (props) => {
         <Row>
           <Col>
             <label className="key">Product Pictures</label>
-            <div style={{ display: "flex" }}>
+            <div style={{ display: 'flex' }}>
               {productDetails.productPictures.map((picture) => (
                 <div className="productImgContainer">
                   <img src={picture.img} alt="" />
@@ -231,7 +232,7 @@ const Products = (props) => {
       <Container>
         <Row>
           <Col md={12}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <h3>Products</h3>
               <button onClick={handleShow}>Add</button>
             </div>

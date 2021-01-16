@@ -133,7 +133,7 @@ const Category = (props) => {
   };
 
   const handleCategoryInput = (key, value, index, type) => {
-    console.log(value);
+    // console.log(value);
     if (type == 'checked') {
       const updatedCheckedArray = checkedArray.map((item, _index) =>
         index == _index ? { ...item, [key]: value } : item

@@ -6,7 +6,7 @@ import Home from './containers/Home';
 import Signin from './containers/Signin';
 import Signup from './containers/Signup';
 import PrivateRoute from './components/HOC/PrivateRoute';
-import { isUserLoggedIn, getAllCategory } from './actions';
+import { isUserLoggedIn, getInitialData } from './actions';
 import Products from './containers/Products';
 import Orders from './containers/Orders';
 import Category from './containers/Category';
@@ -21,7 +21,7 @@ function App() {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
-    dispatch(getAllCategory());
+    dispatch(getInitialData());
   // eslint-disable-next-line
   }, []);
 

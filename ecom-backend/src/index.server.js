@@ -42,17 +42,6 @@ mongoose
 
 app.use(cors(corsOptions));
 
-// app.use((req, res, next) => {
-//     res.header('Allow-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Headers',
-//     'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-//     if(req.method === 'OPTIONS') {
-//         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-//         return res.status(200).json({});
-//     }
-// })
-
-app.use(express.json());
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', authRoutes);

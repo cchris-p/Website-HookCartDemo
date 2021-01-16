@@ -41,17 +41,15 @@ const buildNewCategories = (parentId, categories, category) => {
             ? [...cat.children, newCategory]
             : [newCategory],
       });
+    } else {
+      myCategories.push({
+        ...cat,
+        children: cat.children
+          ? buildNewCategories(parentId, cat.children, category)
+          : [],
+        });
+      }
     }
-  //   } else {
-  //     myCategories.push({
-  //       ...cat,
-  //       children: cat.children
-  //         ? buildNewCategories(parentId, cat.children, category)
-  //         : [],
-  //     });
-  //   }
-  // }
-  }
 
   return myCategories;
 };

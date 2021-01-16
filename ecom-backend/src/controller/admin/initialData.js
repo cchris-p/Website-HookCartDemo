@@ -35,7 +35,8 @@ exports.initialData = async (req, res) => {
     .populate("items.productId", "name")
     .exec();
   res.status(200).json({
-    categories,
+    categories: createCategories(categories),
     products,
+    orders,
   });
 };
