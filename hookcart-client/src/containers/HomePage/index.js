@@ -1,14 +1,22 @@
-import React from 'react';
-import Header from '../../components/Header';
+/* eslint-disable */
+
+import React from 'react'
+import Header from '../../components/Header'
+import Layout from '../../components/Layout'
+import MenuHeader from '../../components/MenuHeader'
 
 /**
- * 
- *  @return {void}
- */
-export default function HomePage() {
-  return (
-    <div>
-      <Header />
-    </div> 
-  );
-}
+* @author
+* @function HomePage
+**/
+
+const HomePage = (props) => {
+  return(
+    <Layout>
+      Home Page
+    </Layout>
+   )
+
+ }
+
+export default HomePage
