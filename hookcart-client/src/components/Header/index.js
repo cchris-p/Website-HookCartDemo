@@ -1,19 +1,19 @@
 /* eslint-disable */
 
-import React, { useEffect, useState } from "react";
-import "./style.css";
-import flipkartLogo from "../../images/logo/flipkart.png";
-import goldenStar from "../../images/logo/golden-star.png";
-import { IoIosArrowDown, IoIosCart, IoIosSearch } from "react-icons/io";
+import React, { useEffect, useState } from 'react';
+import './style.css';
+import hookcartLogo from '../../images/logo/hookcart-logo.png';
+import goldenStar from '../../images/logo/golden-star.png';
+import { IoIosArrowDown, IoIosCart, IoIosSearch } from 'react-icons/io';
 import {
   Modal,
   MaterialInput,
   MaterialButton,
   DropdownMenu,
-} from "../MaterialUI";
-import { useDispatch, useSelector } from "react-redux";
-import { login, signout, getCartItems, signup as _signup } from "../../actions";
-import Cart from "../UI/Cart";
+} from '../MaterialUI';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, signout, getCartItems, signup as _signup } from '../../actions';
+import Cart from '../UI/Cart';
 
 /**
  * @author
@@ -22,11 +22,11 @@ import Cart from "../UI/Cart";
 const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
   const [signup, setSignup] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -36,10 +36,10 @@ const Header = (props) => {
   const userSignup = () => {
     const user = { firstName, lastName, email, password };
     if (
-      firstName === "" ||
-      lastName === "" ||
-      email === "" ||
-      password === ""
+      firstName === '' ||
+      lastName === '' ||
+      email === '' ||
+      password === ''
     ) {
       return;
     }
@@ -74,21 +74,21 @@ const Header = (props) => {
       <DropdownMenu
         menu={<a className="fullName">{auth.user.fullName}</a>}
         menus={[
-          { label: "My Profile", href: "", icon: null },
-          { label: "SuperCoin Zone", href: "", icon: null },
-          { label: "Flipkart Plus Zone", href: "", icon: null },
+          { label: 'My Profile', href: '', icon: null },
+          { label: 'SuperCoin Zone', href: '', icon: null },
+          { label: 'Flipkart Plus Zone', href: '', icon: null },
           {
-            label: "Orders",
+            label: 'Orders',
             href: `/account/orders`,
             icon: null,
           },
-          { label: "Wishlist", href: "", icon: null },
-          { label: "My Chats", href: "", icon: null },
-          { label: "Coupons", href: "", icon: null },
-          { label: "Rewards", href: "", icon: null },
-          { label: "Notifications", href: "", icon: null },
-          { label: "Gift Cards", href: "", icon: null },
-          { label: "Logout", href: "", icon: null, onClick: logout },
+          { label: 'Wishlist', href: '', icon: null },
+          { label: 'My Chats', href: '', icon: null },
+          { label: 'Coupons', href: '', icon: null },
+          { label: 'Rewards', href: '', icon: null },
+          { label: 'Notifications', href: '', icon: null },
+          { label: 'Gift Cards', href: '', icon: null },
+          { label: 'Logout', href: '', icon: null, onClick: logout },
         ]}
       />
     );
@@ -109,19 +109,19 @@ const Header = (props) => {
           </a>
         }
         menus={[
-          { label: "My Profile", href: "", icon: null },
-          { label: "Flipkart Plus Zone", href: "", icon: null },
+          { label: 'My Profile', href: '', icon: null },
+          { label: 'Flipkart Plus Zone', href: '', icon: null },
           {
-            label: "Orders",
+            label: 'Orders',
             href: `/account/orders`,
             icon: null,
             onClick: () => {
               !auth.authenticate && setLoginModal(true);
             },
           },
-          { label: "Wishlist", href: "", icon: null },
-          { label: "Rewards", href: "", icon: null },
-          { label: "Gift Cards", href: "", icon: null },
+          { label: 'Wishlist', href: '', icon: null },
+          { label: 'Rewards', href: '', icon: null },
+          { label: 'Gift Cards', href: '', icon: null },
         ]}
         firstMenu={
           <div className="firstmenu">
@@ -131,7 +131,7 @@ const Header = (props) => {
                 setLoginModal(true);
                 setSignup(true);
               }}
-              style={{ color: "#2874f0" }}
+              style={{ color: '#D42626' }}
             >
               Sign Up
             </a>
@@ -153,7 +153,7 @@ const Header = (props) => {
             <div className="rightspace">
               <div className="loginInputContainer">
                 {auth.error && (
-                  <div style={{ color: "red", fontSize: 12 }}>{auth.error}</div>
+                  <div style={{ color: 'red', fontSize: 12 }}>{auth.error}</div>
                 )}
                 {signup && (
                   <MaterialInput
@@ -186,21 +186,21 @@ const Header = (props) => {
                   // rightElement={<a href="#">Forgot?</a>}
                 />
                 <MaterialButton
-                  title={signup ? "Register" : "Login"}
+                  title={signup ? 'Register' : 'Login'}
                   bgColor="#fb641b"
                   textColor="#ffffff"
                   style={{
-                    margin: "40px 0 20px 0",
+                    margin: '40px 0 20px 0',
                   }}
                   onClick={userLogin}
                 />
-                <p style={{ textAlign: "center" }}>OR</p>
+                <p style={{ textAlign: 'center' }}>OR</p>
                 <MaterialButton
                   title="Request OTP"
                   bgColor="#ffffff"
-                  textColor="#2874f0"
+                  textColor="#D42626"
                   style={{
-                    margin: "20px 0",
+                    margin: '20px 0',
                   }}
                 />
               </div>
@@ -212,9 +212,9 @@ const Header = (props) => {
         {/* Logo  */}
         <div className="logo">
           <a href="/">
-            <img src={flipkartLogo} className="logoimage" alt="" />
+            <img src={hookcartLogo} className="logoimage" alt="" />
           </a>
-          <a style={{ marginTop: "-10px" }}>
+          <a style={{ marginTop: '-10px' }}>
             <span className="exploreText">Explore</span>
             <span className="plusText">Plus</span>
             <img src={goldenStar} className="goldenStar" alt="" />
@@ -225,18 +225,18 @@ const Header = (props) => {
         {/* search component */}
         <div
           style={{
-            padding: "0 10px",
+            padding: '0 10px',
           }}
         >
           <div className="searchInputContainer">
             <input
               className="searchInput"
-              placeholder={"search for products, brands and more"}
+              placeholder={'search for products, brands and more'}
             />
             <div className="searchIconContainer">
               <IoIosSearch
                 style={{
-                  color: "#2874f0",
+                  color: '#D42626',
                 }}
               />
             </div>
@@ -255,17 +255,17 @@ const Header = (props) => {
               </a>
             }
             menus={[
-              { label: "Notification Preference", href: "", icon: null },
-              { label: "Sell on flipkart", href: "", icon: null },
-              { label: "24x7 Customer Care", href: "", icon: null },
-              { label: "Advertise", href: "", icon: null },
-              { label: "Download App", href: "", icon: null },
+              { label: 'Notification Preference', href: '', icon: null },
+              { label: 'Sell on flipkart', href: '', icon: null },
+              { label: '24x7 Customer Care', href: '', icon: null },
+              { label: 'Advertise', href: '', icon: null },
+              { label: 'Download App', href: '', icon: null },
             ]}
           />
           <div>
             <a href={`/cart`} className="cart">
               <Cart count={Object.keys(cart.cartItems).length} />
-              <span style={{ margin: "0 10px" }}>Cart</span>
+              <span style={{ margin: '0 10px' }}>Cart</span>
             </a>
           </div>
         </div>

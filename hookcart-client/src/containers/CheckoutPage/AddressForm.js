@@ -176,7 +176,7 @@ const AddressForm = (props) => {
           </div>
         </div>
         <div>
-          <label>Address Type</label>
+          {/* <label>Address Type</label> */}
           <div className="flexRow">
             <div>
               <input

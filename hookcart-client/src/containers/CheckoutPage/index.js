@@ -1,20 +1,20 @@
 /* eslint-disable */
 
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addOrder, getAddress, getCartItems } from "../../actions";
-import Layout from "../../components/Layout";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addOrder, getAddress, getCartItems } from '../../actions';
+import Layout from '../../components/Layout';
 import {
   Anchor,
   MaterialButton,
   MaterialInput,
-} from "../../components/MaterialUI";
-import PriceDetails from "../../components/PriceDetails";
-import Card from "../../components/UI/Card";
-import CartPage from "../CartPage";
-import AddressForm from "./AddressForm";
+} from '../../components/MaterialUI';
+import PriceDetails from '../../components/PriceDetails';
+import Card from '../../components/UI/Card';
+import CartPage from '../CartPage';
+import AddressForm from './AddressForm';
 
-import "./style.css";
+import './style.css';
 
 /**
  * @author
@@ -26,7 +26,7 @@ const CheckoutStep = (props) => {
     <div className="checkoutStep">
       <div
         onClick={props.onClick}
-        className={`checkoutHeader ${props.active && "active"}`}
+        className={`checkoutHeader ${props.active && 'active'}`}
       >
         <div>
           <span className="stepNumber">{props.stepNumber}</span>
@@ -52,7 +52,7 @@ const Address = ({
       </div>
       <div className="flexRow sb addressinfo">
         {!adr.edit ? (
-          <div style={{ width: "100%" }}>
+          <div style={{ width: '100%' }}>
             <div className="addressDetail">
               <div>
                 <span className="addressName">{adr.name}</span>
@@ -64,8 +64,8 @@ const Address = ({
                   name="EDIT"
                   onClick={() => enableAddressEditForm(adr)}
                   style={{
-                    fontWeight: "500",
-                    color: "#2874f0",
+                    fontWeight: '500',
+                    color: '#D42626',
                   }}
                 />
               )}
@@ -78,8 +78,8 @@ const Address = ({
                 title="DELIVERY HERE"
                 onClick={() => confirmDeliveryAddress(adr)}
                 style={{
-                  width: "200px",
-                  margin: "10px 0",
+                  width: '200px',
+                  margin: '10px 0',
                 }}
               />
             )}
@@ -163,8 +163,8 @@ const CheckoutPage = (props) => {
       addressId: selectedAddress._id,
       totalAmount,
       items,
-      paymentStatus: "pending",
-      paymentType: "cod",
+      paymentStatus: 'pending',
+      paymentType: 'cod',
     };
 
     console.log(payload);
@@ -195,18 +195,18 @@ const CheckoutPage = (props) => {
 
   return (
     <Layout>
-      <div className="cartContainer" style={{ alignItems: "flex-start" }}>
+      <div className="cartContainer" style={{ alignItems: 'flex-start' }}>
         <div className="checkoutContainer">
           {/* check if user logged in or not */}
           <CheckoutStep
-            stepNumber={"1"}
-            title={"LOGIN"}
+            stepNumber={'1'}
+            title={'LOGIN'}
             active={!auth.authenticate}
             body={
               auth.authenticate ? (
                 <div className="loggedInId">
                   <span style={{ fontWeight: 500 }}>{auth.user.fullName}</span>
-                  <span style={{ margin: "0 5px" }}>{auth.user.email}</span>
+                  <span style={{ margin: '0 5px' }}>{auth.user.email}</span>
                 </div>
               ) : (
                 <div>
@@ -216,8 +216,8 @@ const CheckoutPage = (props) => {
             }
           />
           <CheckoutStep
-            stepNumber={"2"}
-            title={"DELIVERY ADDRESS"}
+            stepNumber={'2'}
+            title={'DELIVERY ADDRESS'}
             active={!confirmAddress && auth.authenticate}
             body={
               <>
@@ -243,16 +243,16 @@ const CheckoutPage = (props) => {
             <AddressForm onSubmitForm={onAddressSubmit} onCancel={() => {}} />
           ) : auth.authenticate ? (
             <CheckoutStep
-              stepNumber={"+"}
-              title={"ADD NEW ADDRESS"}
+              stepNumber={'+'}
+              title={'ADD NEW ADDRESS'}
               active={false}
               onClick={() => setNewAddress(true)}
             />
           ) : null}
 
           <CheckoutStep
-            stepNumber={"3"}
-            title={"ORDER SUMMARY"}
+            stepNumber={'3'}
+            title={'ORDER SUMMARY'}
             active={orderSummary}
             body={
               orderSummary ? (
@@ -268,25 +268,25 @@ const CheckoutPage = (props) => {
           {orderSummary && (
             <Card
               style={{
-                margin: "10px 0",
+                margin: '10px 0',
               }}
             >
               <div
                 className="flexRow sb"
                 style={{
-                  padding: "20px",
-                  alignItems: "center",
+                  padding: '20px',
+                  alignItems: 'center',
                 }}
               >
-                <p style={{ fontSize: "12px" }}>
-                  Order confirmation email will be sent to{" "}
+                <p style={{ fontSize: '12px' }}>
+                  Order confirmation email will be sent to{' '}
                   <strong>{auth.user.email}</strong>
                 </p>
                 <MaterialButton
                   title="CONTINUE"
                   onClick={userOrderConfirmation}
                   style={{
-                    width: "200px",
+                    width: '200px',
                   }}
                 />
               </div>
@@ -294,8 +294,8 @@ const CheckoutPage = (props) => {
           )}
 
           <CheckoutStep
-            stepNumber={"4"}
-            title={"PAYMENT OPTIONS"}
+            stepNumber={'4'}
+            title={'PAYMENT OPTIONS'}
             active={paymentOption}
             body={
               paymentOption && (
@@ -303,8 +303,8 @@ const CheckoutPage = (props) => {
                   <div
                     className="flexRow"
                     style={{
-                      alignItems: "center",
-                      padding: "20px",
+                      alignItems: 'center',
+                      padding: '20px',
                     }}
                   >
                     <input type="radio" name="paymentOption" value="cod" />
@@ -314,8 +314,8 @@ const CheckoutPage = (props) => {
                     title="CONFIRM ORDER"
                     onClick={onConfirmOrder}
                     style={{
-                      width: "200px",
-                      margin: "0 0 20px 20px",
+                      width: '200px',
+                      margin: '0 0 20px 20px',
                     }}
                   />
                 </div>

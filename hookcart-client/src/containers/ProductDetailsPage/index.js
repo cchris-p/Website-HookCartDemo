@@ -16,7 +16,6 @@ import {generatePublicUrl} from "../../urlConfig";
  * @author
  * @function ProductDetailsPage
  **/
-
 const ProductDetailsPage = (props) => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
