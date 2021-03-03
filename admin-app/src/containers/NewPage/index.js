@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import Modal from '../../components/UI/Modal';
 import Layout from '../../components/Layout';
@@ -44,7 +46,6 @@ const NewPage = (props) => {
     }, [page]);
 
     const onCategoryChange = (e) => {
-        // eslint-disable-next-line
         const category = categories.find(category => category.value == e.target.value);
         setCategoryId(e.target.value);
         setType(category.type);
@@ -97,7 +98,7 @@ const NewPage = (props) => {
                 <Container>
                     <Row>
                         <Col>
-                            {/* <select
+                            <select
                                 className="form-control"
                                 value={categoryId}
                                 onChange={onCategoryChange}
@@ -108,7 +109,7 @@ const NewPage = (props) => {
                                         <option key={cat._id} value={cat._id}>{cat.name}</option>
                                     )
                                 }
-                            </select> */}
+                            </select>
                             <Input 
                                 type="select"
                                 value={categoryId}
@@ -140,7 +141,7 @@ const NewPage = (props) => {
                             />
                         </Col>
                     </Row>
-
+                    <p style={{marginBottom: '-3px'}}>Banners</p>
                     {
                             banners.length > 0 ? 
                             banners.map((banner, index) => 
@@ -159,7 +160,7 @@ const NewPage = (props) => {
                             />
                         </Col>
                     </Row>
-
+                    <p style={{marginBottom: '-3px'}}>Products</p>
                     {
                             products.length > 0 ? 
                             products.map((product, index) => 
@@ -178,12 +179,7 @@ const NewPage = (props) => {
                             />
                         </Col>
                     </Row>
-
-                    
-
                 </Container>
-
-
             </Modal>
         );
     }
