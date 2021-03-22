@@ -1,9 +1,10 @@
 /* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import Modal from '../../components/UI/Modal';
 import Layout from '../../components/Layout';
 import Input from '../../components/UI/Input';
-import { Container, Row, Col, Table } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   getAllPages,
@@ -23,7 +24,6 @@ import {
 } from 'react-icons/io';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 import UpdatePagesModal from './components/UpdatePagesModal';
-import { generatePublicUrl } from '../../urlConfig';
 import './style.css';
 
 /**
@@ -41,13 +41,16 @@ const NewPage = (props) => {
   const [type, setType] = useState('');
   const [banners, setBanners] = useState([]);
   const [products, setProducts] = useState([]);
-  const [pageList, setPageList] = useState([]);
-
-  const [pageDetailsModal, setPageDetailsModal] = useState(false);
-  const [pageDetails, setPageDetails] = useState(null);
-
-  const page = useSelector((state) => state.page);
   const dispatch = useDispatch();
+  const page = useSelector((state) => state.page);
+// 
+  const [updatePageModal, setUpdatePageModal] = useState(false);
+  const [deletePageModal, setDeletePageModal] = useState(false);
+  const [checked, setChecked] = useState([]);
+  const [checkedArray, setCheckedArray] = useState([]);
+  const [expanded, setExpanded] = useState([]);
+  const [expandedArray, setExpandedArray] = useState([]);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     // console.log(page);
@@ -70,14 +73,18 @@ const NewPage = (props) => {
   };
 
   const handleBannerImages = (e) => {
+    // console.log(e);
     setBanners([...banners, e.target.files[0]]);
   };
 
   const handleProductImages = (e) => {
+    // console.log(e);
     setProducts([...products, e.target.files[0]]);
   };
 
   const submitPageForm = (e) => {
+    //e.target.preventDefault();
+
     if (title === '') {
       alert('Title is required');
       setCreateModal(false);
@@ -99,7 +106,22 @@ const NewPage = (props) => {
     dispatch(createPage(form));
   };
 
-  useEffect(() => setPageList(page.pages));
+
+  // useEffect(() => setPageList(createPageList()));
+
+  // const createPageList = () => {    
+  //   const res = dispatch(getAllPages());
+  //   return res.data;
+  // };
+
+  const pageList = () => {
+      var list = dispatch(getAllPages());
+
+      // console.log("PAGE LIST");
+      // console.log(list.data);
+      return list;
+  }
+
 
   const renderCreatePageModal = () => {
     return (
@@ -184,124 +206,6 @@ const NewPage = (props) => {
     );
   };
 
-  const renderPageList = () => {
-    return (
-      <Table style={{ fontSize: 12 }} responsive="sm">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {page.pages.length > 0
-            ? page.pages.map((page, index) => (
-                <tr key={index}>
-                  <td>{page._id}</td>
-                  <td>{page.title}</td>
-                  <td>{page.description}</td>
-                  <td>{page.category}</td>
-                  <td>
-                    <button onClick={() => showPageDetailsModal(page)}>
-                      info
-                    </button>
-                    <button
-                      onClick={() => {
-                        // const payload = {
-                        //   productId: product._id,
-                        // };
-                        // dispatch(deleteProductById(payload));
-                      }}
-                    >
-                      del
-                    </button>
-                  </td>
-                </tr>
-              ))
-            : null}
-        </tbody>
-      </Table>
-    );
-  };
-
-  const handleClosePageDetailsModal = () => {
-    setPageDetailsModal(false);
-  };
-
-  const showPageDetailsModal = (product) => {
-    setPageDetails(product);
-    setPageDetailsModal(true);
-  };
-
-  const renderPageDetailsModal = () => {
-    if (!pageDetails) {
-      return null;
-    }
-
-    return (
-      <Modal
-        show={pageDetailsModal}
-        handleClose={handleClosePageDetailsModal}
-        onSubmit={handleClosePageDetailsModal}
-        modalTitle={'Page Details'}
-        size="lg"
-      >
-        <Row>
-          <Col md="6">
-            <label className="key">Name</label>
-            <p className="value">{pageDetails.title}</p>
-          </Col>
-          <Col md="6">
-            <label className="key">Category</label>
-            <p className="value">{pageDetails.category}</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col md="12">
-            <label className="key">Description</label>
-            <p className="value">{pageDetails.description}</p>
-          </Col>
-        </Row>
-        <Row>
-          <div style={{ width: '100%' }}>
-            <Col>
-              <label className="key">Banner Pictures</label>
-              <div
-                style={{
-                  display: 'block',
-                  flexDirection: 'column',
-                  margin: '0 auto',
-                }}
-              >
-                <div className="bannerImgContainer">
-                  {pageDetails.banners.map((picture) => (
-                    <img src={generatePublicUrl(picture.img)} alt="" />
-                  ))}
-                </div>
-              </div>
-            </Col>
-            <Col>
-              <label className="key">Products</label>
-              <div style={{ display: 'flex' }}>
-                <div className="productImgContainer">
-                  {pageDetails.products.map((product) => (
-                    <div>
-                      <img src={generatePublicUrl(product._id)} alt="" />
-                      <img src={generatePublicUrl(product.img)} alt="" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Col>
-          </div>
-        </Row>
-      </Modal>
-    );
-  };
-
   return (
     <Layout sidebar>
       {page.loading ? (
@@ -317,17 +221,30 @@ const NewPage = (props) => {
                   style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
                   <h3>Page</h3>
+                  <div className="actionBtnContainer">
+                    <span>Actions: </span>
+                    <button onClick={() => setCreateModal(true)}>
+                      <IoIosAdd /> <span>Add</span>
+                    </button>
+                    <button>
+                      <IoIosTrash /> <span>Delete</span>
+                    </button>
+                    <button>
+                      <IoIosCloudUpload /> <span>Edit</span>
+                    </button>
+                  </div>
                 </div>
               </Col>
             </Row>
             <Row>
-              {/* {console.log('PAGE == ', pageList)} */}
-              <Col>{renderPageList()}</Col>
+              {pageList()}
+              {/* {pageList.map((page) => {
+                    <p>{page}</p>
+                })} */}
             </Row>
           </Container>
         </>
       )}
-      {renderPageDetailsModal()}
     </Layout>
   );
 };

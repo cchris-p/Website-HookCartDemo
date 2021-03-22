@@ -68,7 +68,7 @@ const Products = (props) => {
       <Table style={{ fontSize: 12 }} responsive="sm">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -80,7 +80,7 @@ const Products = (props) => {
           {product.products.length > 0
             ? product.products.map((product) => (
                 <tr key={product._id}>
-                  <td>{product._id}</td>
+                  <td>2</td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.quantity}</td>

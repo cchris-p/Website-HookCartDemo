@@ -12,19 +12,7 @@
   align-items: center;
 }
 
-.logo {
-  width: 137px;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-}
-.logo .logoimage {
-  width: 130px;
-  margin-top: 10px;
-}
+
 .exploreText {
   font-size: 10px;
   font-style: italic;

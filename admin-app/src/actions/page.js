@@ -6,11 +6,13 @@ export const getAllPages = () => {
   return async (dispatch) => {
     dispatch({ type: pageConstants.GET_ALL_PAGES_REQUEST });
     const res = await axios.get(`page/getPages`);
+    console.log(res);
     if (res.status === 200) {
-      const { pages } = res.data;
+      const { pageList } = res.data;
+
       dispatch({
         type: pageConstants.GET_ALL_PAGES_SUCCESS,
-        payload: { pages },
+        payload: { pages: pageList },
       });
     } else {
       dispatch({
