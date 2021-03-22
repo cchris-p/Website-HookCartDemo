@@ -196,7 +196,7 @@ const Header = (props) => {
                 />
                 <p style={{ textAlign: 'center' }}>OR</p>
                 <MaterialButton
-                  title="Request OTP"
+                  title="Sign Up"
                   bgColor="#ffffff"
                   textColor="#D42626"
                   style={{

@@ -2,7 +2,7 @@
 import axios from '../helpers/axios';
 import { categoryConstants } from './constants';
 
-const getAllCategory = () => {
+export const getAllCategory = () => {
   return async (dispatch) => {
     dispatch({ type: categoryConstants.GET_ALL_CATEGORIES_REQUEST });
     const res = await axios.get(`category/getcategory`);
@@ -82,5 +82,3 @@ export const deleteCategories = (ids) => {
     }
   };
 };
-
-export { getAllCategory };

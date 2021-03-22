@@ -46,13 +46,6 @@ const Category = (props) => {
   const [deleteCategoryModal, setDeleteCategoryModal] = useState(false);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (!category.loading) {
-  //     setShow(false);
-  //     dispatch(getAllCategory());
-  //   }
-  // }, [category.loading]);
-
   const handleClose = () => {
     const form = new FormData();
 
@@ -70,6 +63,7 @@ const Category = (props) => {
     setParentCategoryId('');
     setShow(false);
   };
+  
   const handleShow = () => setShow(true);
 
   const renderCategories = (categories) => {

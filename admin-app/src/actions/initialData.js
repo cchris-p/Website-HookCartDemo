@@ -2,14 +2,20 @@ import {
   categoryConstants,
   productConstants,
   orderConstants,
+  pageConstants,
 } from './constants';
 import axios from '../helpers/axios';
 
 export const getInitialData = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     const res = await axios.post(`/initialData`);
     if (res.status === 200) {
-      const { categories, products, orders } = res.data;
+      console.log(res.data);
+      const { categories, products, orders, pages } = res.data;
+      dispatch({
+        type: pageConstants.GET_ALL_PAGES_SUCCESS,
+        payload: { pages },
+      });
       dispatch({
         type: categoryConstants.GET_ALL_CATEGORIES_SUCCESS,
         payload: { categories },
@@ -23,6 +29,6 @@ export const getInitialData = () => {
         payload: { orders },
       });
     }
-    console.log(res);
+    // console.log(res);
   };
 };

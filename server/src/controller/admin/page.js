@@ -1,4 +1,4 @@
-const Page = require("../../models/page");
+const Page = require('../../models/page');
 
 exports.createPage = (req, res) => {
   const { banners, products } = req.files;
@@ -43,10 +43,19 @@ exports.createPage = (req, res) => {
 
 exports.getPage = (req, res) => {
   const { category, type } = req.params;
-  if (type === "page") {
+  if (type === 'page') {
     Page.findOne({ category: category }).exec((error, page) => {
       if (error) return res.status(400).json({ error });
       if (page) return res.status(200).json({ page });
     });
   }
+};
+
+exports.getAllPages = (req, res) => {
+  Page.find({}).exec((error, pages) => {
+    if (error) return res.status(400).json({ error });
+    if (pages) {
+      res.status(200).json({ pages });
+    }
+  });
 };

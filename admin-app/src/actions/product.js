@@ -1,7 +1,6 @@
 import axios from '../helpers/axios';
 import { productConstants } from './constants';
 
-// new action
 const getProducts = () => {
   return async (dispatch) => {
     try {
@@ -22,7 +21,6 @@ const getProducts = () => {
   };
 };
 
-// modified actrion
 export const addProduct = (form) => {
   return async (dispatch) => {
     try {
@@ -40,7 +38,6 @@ export const addProduct = (form) => {
   };
 };
 
-// new action
 export const deleteProductById = (payload) => {
   return async (dispatch) => {
     try {
