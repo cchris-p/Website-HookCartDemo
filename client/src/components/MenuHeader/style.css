@@ -1,73 +1,215 @@
+button {
+  border: none;
+  background-color: white;
+  height: auto;
+}
+
+img {
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
 .menuHeader {
   display: flex;
+  align-items: center;
   width: 100%;
-  height: 60px;
+  height: 80px;
   background: #fff;
   border-bottom: 1px solid #cecece;
   box-shadow: 0 2px 2px -2px #333;
 }
-.menuHeader ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.menuHeader > ul {
-  display: flex;
-  margin: 0 50px;
-  position: relative;
-}
-.menuHeader > ul > li > span {
-  display: block;
-  line-height: 40px;
-  cursor: pointer;
-  padding: 0 20px;
-  font-size: 14px;
-}
-.menuHeader > ul > li > span:hover {
-  color: #d42626;
-}
-.menuHeader > ul > li > ul {
-  position: absolute;
-  background: #fff;
-  left: 0;
-  right: 0;
-  display: none;
-  border: 1px solid #cecece;
-  z-index: 1;
-}
-.menuHeader > ul > li:hover ul {
-  display: block;
-}
-.menuHeader > ul > li > ul > li {
-  margin: 0 20px;
-  min-width: 150px;
-}
-.menuHeader > ul > li > ul > li {
-  float: left;
-}
-.menuHeader > ul > li > ul > li > a {
-  font-weight: bold;
-  display: block;
-}
-.menuHeader > ul > li > ul > li a {
-  padding: 3px 0;
-  display: block;
-  font-size: 12px;
+
+
+.menuHeader a {
+  color: grey;
   text-decoration: none;
-  color: #707070;
 }
 
-.menuHeader p {
-  padding: 5px 40px;
+.menuHeader a:hover {
+  color: black;
+  text-decoration: none;
 }
 
 
-.logo {
-  /* border: 2px solid red; */
+.menuHeader a:visited {
+  color: grey;
+}
+
+.menuHeader a > h2 {
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.header {
+  width: 100%;
+  height: 46px;
+  background: #222222;
+}
+.leftMenu {
+  max-width: 1100px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.leftMenu > a {
+  padding: 25px;
+
+}
+
+.searchInputContainer {
+  width: 560px;
+  position: relative;
+  background: #fff;
+  height: 36px;
+  border-radius: 1px;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+}
+.searchInput {
+  width: 518px;
+  border: 0;
+  height: 36px;
+  outline: none;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+.searchIconContainer {
+  display: flex;
+  flex: 1;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+}
+.rightMenu {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+.loginButton {
+  display: block;
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  text-align: center;
+  line-height: 30px;
+  color: #d42626;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+}
+.more,
+.fullName {
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+  cursor: pointer;
+}
+.cart {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+}
 
+.authContainer {
+  color: #212121;
+  margin: 0 auto;
+  border-radius: 2px;
+  height: 528px;
+  max-width: 750px;
+  min-width: 650px;
+}
+.row {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  height: 528px;
+  max-width: 750px;
+  min-width: 650px;
+}
+
+.leftspace {
+  width: 40%;
+  height: 100%;
+  color: #fff;
+  letter-spacing: 1px;
+  background-image: url('../../images/login-image.png');
+  background-color: #d42626;
+  background-repeat: no-repeat;
+  background-position: center 85%;
+  padding: 40px 33px;
+  box-sizing: border-box;
+}
+
+.rightspace {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginInputContainer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30px;
+  margin: 5px 0;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.mobileLeftMenu {
+  max-width: 1100px;
+  width: 100%;
+  height: 100%;
+  display: none;
+  margin: 0 auto;
+  align-items: center;  
+}
+
+.mobileMenu > button:focus {
+  outline: 0;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+  .menuHeader {
+    height: 40px;
+  }
+
+  .menuHeader a {
+    color: grey;
+    margin-top: 2px;
+    padding: 0px 20px;
+    text-decoration: none;
+  }
+
+  .leftMenu {
+    display: none;
+  }
+
+  .mobileLeftMenu {
+    display: flex;
+  }
+  
+
+
+  .mobileMenu {
+    display: flex;
+    align-items:
+  }
 }

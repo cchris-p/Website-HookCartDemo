@@ -8,7 +8,7 @@ import { IoIosCart } from "react-icons/io";
 
 const Cart = (props) => {
   return (
-    <div style={{ fontSize: "20px", position: "relative" }}>
+    <div style={{ fontSize: "32px", position: "relative", marginTop: '6px', '&hover': { color: 'black'} }}>
       <span
         style={{
           position: "absolute",
