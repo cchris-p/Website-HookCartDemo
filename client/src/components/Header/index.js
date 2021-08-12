@@ -1,23 +1,17 @@
 /* eslint-disable */
-
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./style.css";
-import { IoIosArrowDown, IoIosCart, IoIosSearch } from "react-icons/io";
-import {
-  Modal,
-  MaterialInput,
-  MaterialButton,
-  DropdownMenu,
-} from "../MaterialUI";
-import { useDispatch, useSelector } from "react-redux";
-import { login, signout, getCartItems, signup as _signup } from "../../actions";
-import Cart from "../UI/Cart";
 
 /**
  * @author
  * @function Header
  **/
 const Header = (props) => {
+  const dropdownRef = useRef(null);
+  const [isActive, setIsActive] = useState(false);
+
+  // useEffect(() => {}, [isActive]);
+
   return (
     <div className="header">
       <div className="header-comp">
@@ -26,11 +20,19 @@ const Header = (props) => {
             <i className="fas fa-phone-volume"></i>&nbsp;&nbsp;8 800 799 99 99
           </p>
         </a>
-        <a href="/">
+        <button onClick={() => setIsActive(!isActive)}>
           <p>
-            <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Store in Seattle, WA
+            <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Store in Seattle,
+            WA&nbsp;&nbsp;
+            <i class="fas fa-caret-down"></i>
           </p>
-        </a>
+        </button>
+        <div
+          ref={dropdownRef}
+          className={`showMenu ${isActive ? "active" : "inactive"}`}
+        >
+          <p>Map is here</p>
+        </div>
       </div>
       <div className="header-comp">
         <a href="/">

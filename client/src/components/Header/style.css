@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   color: grey;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .header a {
@@ -20,6 +20,39 @@
 .header-comp {
   display: flex;
   flex-direction: row;
+}
+
+.header-comp button {
+  background-color: #222222;
+  color: grey;
+}
+
+.header-comp button:hover {
+  background-color: #222222;
+  color: silver;
+  cursor:pointer;
+}
+
+.header-comp button:focus {
+  border: none;
+}
+
+.showMap {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;  
+  height: 300px;
+  width: 300px;
+  top: 40px;
+  left: 40px;
+  background-color: white;
+  border: 1px solid grey;
+  visibility: visible;
+}
+
+.showMap.active {
+  opacity: 1;
+
 }
 
 

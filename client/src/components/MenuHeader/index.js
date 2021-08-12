@@ -245,6 +245,25 @@ const MenuHeader = (props) => {
               style={{ fontSize: "14px", color: "silver" }}
             ></i>
           </h2>
+          <div className="showMenu">
+            <div className="dropdownContainer">
+              <a href="/">
+                <h1>Laptops & PCs</h1>
+              </a>
+              <a href="/">
+                <h1>Phones & Gadgets</h1>
+              </a>
+              <a href="/">
+                <h1>TV & Computers</h1>
+              </a>
+              <a href="/">
+                <h1>Games & Entertainment</h1>
+              </a>
+              <a href="/">
+                <h1>Photos</h1>
+              </a>
+            </div>
+          </div>
         </a>
         <a href="/">
           <h2>
@@ -273,9 +292,9 @@ const MenuHeader = (props) => {
               fontSize: "28px",
               color: "grey",
               marginBottom: "2px",
-              '&hover': {
-                color: 'black',
-              }
+              "&hover": {
+                color: "black",
+              },
             }}
           ></i>
         </button>

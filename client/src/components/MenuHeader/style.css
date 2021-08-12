@@ -184,6 +184,48 @@ img {
   outline: 0;
 }
 
+.leftMenu > a:hover .showMenu{
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid grey;
+
+}
+
+
+.showMenu {
+  display: none;
+}
+
+.dropdownContainer {
+  display:flex;
+  justify-content: space-around;
+
+}
+
+.dropdownContainer > a {
+  padding: 50px;
+
+}
+
+.dropdownContainer > a > h1 {
+  font-size: 25px;
+}
+
+.leftMenu > .showMenu > a:hover {
+  color: black;
+}
+
+
+.dropdownContainer {
+  display: flex;
+
+}
+
 
 
 @media only screen and (max-width: 1000px) {
